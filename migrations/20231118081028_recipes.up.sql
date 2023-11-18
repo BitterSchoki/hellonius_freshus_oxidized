@@ -13,7 +13,9 @@ CREATE TABLE recipes (
 CREATE TABLE ingredients (
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
-    descr TEXT NOT NULL
+    descr TEXT NOT NULL,
+    replacement_flag VARCHAR(1) NOT NULL
+    
 );
 
 -- create recipe_ingredients table
