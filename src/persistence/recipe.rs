@@ -5,7 +5,7 @@ pub async fn get_recipe(
     id: i64,
 ) -> Result<Option<Recipe>, sqlx::Error> {
     sqlx::query!(
-        "SELECT id, title, serves, descr
+        "SELECT id, title, serves, descr, image_url
         FROM recipes
         WHERE id = ?",
         id
@@ -19,6 +19,7 @@ pub async fn get_recipe(
             description: r.descr,
             serves: r.serves,
             components: vec![],
+            image_url: r.image_url,
         })
     })
 }
@@ -55,7 +56,7 @@ pub async fn get_recipe_components(
 
 pub async fn all_recipes(db: &mut sqlx::SqliteConnection) -> Result<Vec<Recipe>, sqlx::Error> {
     let recipes = sqlx::query!(
-        "SELECT id, title, serves, descr
+        "SELECT id, title, serves, descr, image_url
         FROM recipes"
     )
     .fetch_all(db)
@@ -67,6 +68,7 @@ pub async fn all_recipes(db: &mut sqlx::SqliteConnection) -> Result<Vec<Recipe>,
         description: r.descr,
         serves: r.serves,
         components: vec![],
+        image_url: r.image_url,
     })
     .collect();
     Ok(recipes)
@@ -77,7 +79,7 @@ pub async fn recipes_by_keyword(
     keyword: &str,
 ) -> Result<Vec<Recipe>, sqlx::Error> {
     let recipes = sqlx::query!(
-        "SELECT id, title, serves, descr
+        "SELECT id, title, serves, descr, image_url
         FROM recipes
         WHERE lower(title) LIKE '%' || lower(?) || '%'
             OR lower(descr) LIKE '%' || lower(?) || '%'",
@@ -93,6 +95,7 @@ pub async fn recipes_by_keyword(
         description: r.descr,
         serves: r.serves,
         components: vec![],
+        image_url: r.image_url,
     })
     .collect();
     Ok(recipes)

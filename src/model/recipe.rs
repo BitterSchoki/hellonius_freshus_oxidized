@@ -10,6 +10,7 @@ pub struct Recipe {
     pub description: String,
     pub serves: i64,
     pub components: Vec<RecipeComponent>,
+    pub image_url: Option<String>,
 }
 
 #[derive(Clone, Default, Deserialize, Serialize)]
