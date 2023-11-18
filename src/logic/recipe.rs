@@ -1,4 +1,6 @@
-use crate::model::{DietGoal, FoodGroup, Ingredient, Recipe, RecipeComponent, SpecialDiet, Unit};
+use crate::model::{
+    DietGoal, Filters, FoodGroup, Ingredient, Recipe, RecipeComponent, SpecialDiet, Unit,
+};
 use crate::persistence::{ingredient, recipe as recipe_db};
 
 pub async fn get_recipe_with_components(
@@ -41,19 +43,15 @@ pub async fn get_full_recipe(
 
 pub async fn filter_recipes(
     db: &mut sqlx::SqliteConnection,
-    food_groups: &[FoodGroup],
-    diet_goals: &[DietGoal],
-    special_diets: &[SpecialDiet],
+    filters: &Filters,
 ) -> Result<Vec<Recipe>, sqlx::Error> {
-    let recipes = recipe_db::all_recipes(db).await?;
+    let recipes = recipe_db::recipes_by_keyword(db, &filters.keyword).await?;
     let mut filtered = Vec::with_capacity(recipes.len());
     'outer: for recipe in recipes {
         let mut with_components = load_components(db, recipe).await?;
         let mut components = Vec::with_capacity(with_components.components.len());
         for component in with_components.components {
-            if let Some(replacement) =
-                replace_component(db, component, food_groups, diet_goals, special_diets).await?
-            {
+            if let Some(replacement) = replace_component(db, component, filters).await? {
                 components.push(replacement);
             } else {
                 continue 'outer;
@@ -68,22 +66,25 @@ pub async fn filter_recipes(
 async fn replace_component(
     db: &mut sqlx::SqliteConnection,
     mut component: RecipeComponent,
-    food_groups: &[FoodGroup],
-    diet_goals: &[DietGoal],
-    special_diets: &[SpecialDiet],
+    filters: &Filters,
 ) -> Result<Option<RecipeComponent>, sqlx::Error> {
     component.ingredient = crate::logic::ingredient::load_tags(db, component.ingredient).await?;
     let ing = &component.ingredient;
-    let mut ok = !food_groups.iter().any(|fg| ing.food_groups.contains(fg));
-    ok &= diet_goals.iter().all(|dg| ing.diet_goals.contains(dg));
-    ok &= special_diets
+    let mut ok = !filters
+        .food_groups
+        .iter()
+        .any(|fg| ing.food_groups.contains(fg));
+    ok &= filters
+        .diet_goals
+        .iter()
+        .all(|dg| ing.diet_goals.contains(dg));
+    ok &= filters
+        .special_diets
         .iter()
         .all(|sd| ing.special_diets.contains(sd));
     if !ok {
         // need to swap
-        let replacement = find_replacements(db, &component, food_groups, diet_goals, special_diets)
-            .await?
-            .pop();
+        let replacement = find_replacements(db, &component, filters).await?.pop();
         Ok(replacement)
     } else {
         Ok(Some(component))
@@ -93,9 +94,7 @@ async fn replace_component(
 async fn find_replacements(
     db: &mut sqlx::SqliteConnection,
     component: &RecipeComponent,
-    food_groups: &[FoodGroup],
-    diet_goals: &[DietGoal],
-    special_diets: &[SpecialDiet],
+    filters: &Filters,
 ) -> Result<Vec<RecipeComponent>, sqlx::Error> {
     // TODO
     Ok(vec![RecipeComponent {

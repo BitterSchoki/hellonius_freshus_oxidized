@@ -1,10 +1,10 @@
-use rocket::serde::{json::Json, Deserialize};
+use rocket::serde::json::Json;
 use rocket_db_pools::Connection;
 
 use crate::db;
 
 use crate::logic;
-use crate::model::{DietGoal, FoodGroup, Recipe, SpecialDiet};
+use crate::model::{Filters, Recipe};
 
 #[get("/<id>")]
 pub async fn get_recipe(mut db: Connection<db::Recipes>, id: i64) -> Option<Json<Recipe>> {
@@ -12,26 +12,13 @@ pub async fn get_recipe(mut db: Connection<db::Recipes>, id: i64) -> Option<Json
     Some(recipe.into())
 }
 
-#[derive(Deserialize)]
-#[serde(crate = "rocket::serde")]
-struct Filters {
-    food_groups: Vec<FoodGroup>,
-    diet_goals: Vec<DietGoal>,
-    special_diets: Vec<SpecialDiet>,
-}
-
 #[post("/filter", data = "<filters>")]
 pub async fn filtered_recipes(
     mut db: Connection<db::Recipes>,
     filters: Json<Filters>,
 ) -> Option<Json<Vec<Recipe>>> {
-    let recipes = logic::recipe::filter_recipes(
-        &mut *db,
-        &filters.food_groups,
-        &filters.diet_goals,
-        &filters.special_diets,
-    )
-    .await
-    .ok()?;
+    let recipes = logic::recipe::filter_recipes(&mut *db, &filters.into_inner())
+        .await
+        .ok()?;
     Some(recipes.into())
 }

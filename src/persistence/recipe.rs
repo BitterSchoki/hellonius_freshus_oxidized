@@ -70,3 +70,29 @@ pub async fn all_recipes(db: &mut sqlx::SqliteConnection) -> Result<Vec<Recipe>,
     .collect();
     Ok(recipes)
 }
+
+pub async fn recipes_by_keyword(
+    db: &mut sqlx::SqliteConnection,
+    keyword: &str,
+) -> Result<Vec<Recipe>, sqlx::Error> {
+    let recipes = sqlx::query!(
+        "SELECT id, title, serves, descr
+        FROM recipes
+        WHERE lower(title) LIKE '%' || lower(?) || '%'
+            OR lower(descr) LIKE '%' || lower(?) || '%'",
+        keyword,
+        keyword
+    )
+    .fetch_all(db)
+    .await?
+    .into_iter()
+    .map(|r| Recipe {
+        id: r.id,
+        title: r.title,
+        description: r.descr,
+        serves: r.serves,
+        components: vec![],
+    })
+    .collect();
+    Ok(recipes)
+}
