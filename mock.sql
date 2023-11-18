@@ -2,12 +2,13 @@
 insert into recipes values (1, 'Mushroom-Risotto', 'A creamy italian dish', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.bgYmIo8ata1o2ifT385NnAHaHa%26pid%3DApi&f=1&ipt=08604a185782e4e904ac3a12e369b6ac1534c02811b607f62a91c927552764d3&ipo=images');
 insert into recipes values (2, 'Dumplings', 'A Bavarian receipe', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.YWvT_e0FJJ4S50KCIqhUPgHaFj%26pid%3DApi&f=1&ipt=aa0eaa922ea65abaf5e583b615c077b3320c8156ce382ba43994824c7fb3c01d&ipo=images');
 insert into recipes values (3, 'Leberkaese Burger', 'A Bavarian receipe', 4, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.9MbDLrIfGBcyPvLKY_bnjwHaHa%26pid%3DApi&f=1&ipt=29f655a42c7228a68020ba659bdd24b89e9a64f471786572285925fb19e1290a&ipo=images');
+insert into recipes values (4, 'Chocolate Brownies', 'A sweet deal! (for 2)', 2, NULL);
 
 --INGREDIENTS
 --Ingredients Mushroom Risotto
 insert into ingredients values (1, 'Mushrooms', 'Stone','mushrooms');
 insert into ingredients values (2, 'Mushrooms', 'Normal', 'mushrooms');
-insert into ingredients values (3, 'Water', 'Tap','x');
+insert into ingredients values (3, 'Water', 'Tap','water');
 insert into ingredients values (4, 'Onions', '','onions');
 insert into ingredients values (5, 'Garlic', '', 'garlic');
 insert into ingredients values (6, 'Rice', 'For risotto', 'rice');
@@ -105,11 +106,6 @@ insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
 insert into recipe_ingredients values (21, 2, 46, 20, 'g');
 insert into recipe_ingredients values (22, 2, 47, 50, 'g');
 
--- Dumplings
-insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
-insert into recipe_ingredients values (21, 2, 46, 20, 'g');
-insert into recipe_ingredients values (22, 2, 47, 50, 'g');
-
 -- FOOD GROUPS 
 -- id, id ingredient, food group id (1, 'Lactose',
 -- 2, 'Gluten' 3, 'Histamines', 4, 'Seafood')
@@ -137,42 +133,70 @@ insert into ingredient_food_groups values(21, 45, 2);
 insert into ingredient_food_groups values(22, 46, 3);
 insert into ingredient_food_groups values(23, 47, 2);
 
--- SPECIAL DIETS
+-- group ingredients for risotto
+insert into ingredient_food_groups values(24, 1, 3);
+
+-- DIET GOALS
 --id, ingredient_id INTEGER NOT NULL, special_diet_id
 --(1, 'Low Carb'),(2, 'High Carb'),(3, 'High Fat'),(4,'Clean Eating');
-insert into ingredient_special_diets values(1, 34, 1);
-insert into ingredient_special_diets values(2, 37, 2);
-insert into ingredient_special_diets values(3, 36, 3);
-insert into ingredient_special_diets values(4, 11, 1);
-insert into ingredient_special_diets values(5, 35, 1);
-insert into ingredient_special_diets values(6, 38, 2);
-insert into ingredient_special_diets values(7, 1, 4);
-insert into ingredient_special_diets values(8, 33, 4);
-insert into ingredient_special_diets values(10, 16, 3);
-insert into ingredient_special_diets values(11, 39, 3);
-insert into ingredient_special_diets values(12, 40, 2);
-insert into ingredient_special_diets values(13, 41, 1);
-insert into ingredient_special_diets values(14, 42, 4);
-insert into ingredient_special_diets values(15, 43, 2);
-insert into ingredient_special_diets values(16, 44, 2);
-insert into ingredient_special_diets values(17, 45, 2);
-insert into ingredient_special_diets values(18, 46, 4);
-insert into ingredient_special_diets values(18, 47, 2);
+insert into ingredient_diet_goals values(1, 34, 1);
+insert into ingredient_diet_goals values(2, 37, 2);
+insert into ingredient_diet_goals values(3, 36, 3);
+insert into ingredient_diet_goals values(4, 11, 1);
+insert into ingredient_diet_goals values(5, 35, 1);
+insert into ingredient_diet_goals values(6, 38, 2);
+insert into ingredient_diet_goals values(7, 1, 4);
+insert into ingredient_diet_goals values(8, 33, 4);
+insert into ingredient_diet_goals values(10, 16, 3);
+insert into ingredient_diet_goals values(11, 39, 3);
+insert into ingredient_diet_goals values(12, 40, 2);
+insert into ingredient_diet_goals values(13, 41, 1);
+insert into ingredient_diet_goals values(14, 42, 4);
+insert into ingredient_diet_goals values(15, 43, 2);
+insert into ingredient_diet_goals values(16, 44, 2);
+insert into ingredient_diet_goals values(17, 45, 2);
+insert into ingredient_diet_goals values(18, 46, 4);
+insert into ingredient_diet_goals values(19, 47, 2);
+insert into ingredient_diet_goals values(20, 2, 4);
+insert into ingredient_diet_goals values(21, 3, 4);
+insert into ingredient_diet_goals values(22, 4, 1);
+insert into ingredient_diet_goals values(23, 5, 1);
+insert into ingredient_diet_goals values(24, 6, 2);
+insert into ingredient_diet_goals values(25, 7, 2);
+insert into ingredient_diet_goals values(26, 8, 1);
+insert into ingredient_diet_goals values(27, 11, 3);
+insert into ingredient_diet_goals values(28, 12, 3);
+insert into ingredient_diet_goals values(29, 13, 3);
+insert into ingredient_diet_goals values(30, 14, 4);
 
--- DIETS GOALS
+-- SPECIAL DIETS
 -- diet gols id, ingredient_id INTEGER NOT NULL, diet_goal_id INT
 -- (1, 'Vegan'),(2, 'Vegetarian'),(3, 'Pescetarian'),(4, 'Keto');
-insert into ingredient_diet_goals values(1, 33, 1);
-insert into ingredient_diet_goals values(2, 34, 1);
-insert into ingredient_diet_goals values(3, 35, 1);
-insert into ingredient_diet_goals values(4, 36, 4);
-insert into ingredient_diet_goals values(5, 37, 2);
-insert into ingredient_diet_goals values(6, 39, 1);
-insert into ingredient_diet_goals values(7, 40, 1);
-insert into ingredient_diet_goals values(8, 41, 1);
-insert into ingredient_diet_goals values(9, 42, 1);
-insert into ingredient_diet_goals values(10, 43, 2);
-insert into ingredient_diet_goals values(11, 44, 1);
-insert into ingredient_diet_goals values(12, 45, 1);
-insert into ingredient_diet_goals values(13, 46, 1);
-insert into ingredient_diet_goals values(14, 47, 1);
+insert into ingredient_special_diets values(1, 33, 1);
+insert into ingredient_special_diets values(2, 34, 1);
+insert into ingredient_special_diets values(3, 35, 1);
+insert into ingredient_special_diets values(4, 36, 4);
+insert into ingredient_special_diets values(5, 37, 2);
+insert into ingredient_special_diets values(6, 39, 1);
+insert into ingredient_special_diets values(7, 40, 1);
+insert into ingredient_special_diets values(8, 41, 1);
+insert into ingredient_special_diets values(9, 42, 1);
+insert into ingredient_special_diets values(10, 43, 2);
+insert into ingredient_special_diets values(11, 44, 1);
+insert into ingredient_special_diets values(12, 45, 1);
+insert into ingredient_special_diets values(13, 46, 1);
+insert into ingredient_special_diets values(14, 47, 1);
+insert into ingredient_special_diets values(15, 1, 1);
+insert into ingredient_special_diets values(16, 2, 1);
+insert into ingredient_special_diets values(17, 3, 1);
+insert into ingredient_special_diets values(18, 4, 1);
+insert into ingredient_special_diets values(19, 5, 1);
+insert into ingredient_special_diets values(20, 6, 1);
+insert into ingredient_special_diets values(21, 7, 1);
+insert into ingredient_special_diets values(22, 8, 1);
+insert into ingredient_special_diets values(23, 9, 1);
+insert into ingredient_special_diets values(24, 10, 1);
+insert into ingredient_special_diets values(25, 11, 2);
+insert into ingredient_special_diets values(26, 12, 2);
+insert into ingredient_special_diets values(27, 13, 1);
+insert into ingredient_special_diets values(28, 14, 1);
