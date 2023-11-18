@@ -70,18 +70,7 @@ insert into ingredients values (45, 'roll', '', 'roll');
 insert into ingredients values (46, 'Petersilie', '', 'herbs'); 
 insert into ingredients values (47, 'Semmelbrösel', '', 'roll');
 
- --(1, 'Lactose',
--- 2, 'Gluten' 3, 'Histamines', 4, 'Seafood')
---39 3
---40 
---41 3
---42
---43
---44
---45
---56
---47
---48
+
 --_______________________________________________________
 
 
@@ -125,6 +114,16 @@ insert into ingredient_food_groups values(11, 20, 4);
 insert into ingredient_food_groups values(12, 21, 3);
 insert into ingredient_food_groups values(13, 22, 1);
 insert into ingredient_food_groups values(14, 26, 1);
+insert into ingredient_food_groups values(15, 39, 3);
+insert into ingredient_food_groups values(16, 40, 3);
+insert into ingredient_food_groups values(17, 41, 3);
+insert into ingredient_food_groups values(18, 42, 3);
+insert into ingredient_food_groups values(19, 43, 3);
+insert into ingredient_food_groups values(20, 44, 3);
+insert into ingredient_food_groups values(21, 45, 2);
+insert into ingredient_food_groups values(22, 46, 3);
+insert into ingredient_food_groups values(23, 47, 2);
+
 
 --special diet
 --id, ingredient_id INTEGER NOT NULL, special_diet_id
@@ -138,7 +137,15 @@ insert into ingredient_special_diets values(6, 38, 2);
 insert into ingredient_special_diets values(7, 1, 4);
 insert into ingredient_special_diets values(8, 33, 4);
 insert into ingredient_special_diets values(10, 16, 3);
-
+insert into ingredient_special_diets values(11, 39, 3);
+insert into ingredient_special_diets values(12, 40, 2);
+insert into ingredient_special_diets values(13, 41, 1);
+insert into ingredient_special_diets values(14, 42, 4);
+insert into ingredient_special_diets values(15, 43, 2);
+insert into ingredient_special_diets values(16, 44, 2);
+insert into ingredient_special_diets values(17, 45, 2);
+insert into ingredient_special_diets values(18, 46, 4);
+insert into ingredient_special_diets values(18, 47, 2);
 
 
 -- diet gols id, ingredient_id INTEGER NOT NULL, diet_goal_id INT
@@ -148,5 +155,25 @@ insert into ingredient_diet_goals values(2, 34, 1);
 insert into ingredient_diet_goals values(3, 35, 1);
 insert into ingredient_diet_goals values(4, 36, 4);
 insert into ingredient_diet_goals values(5, 37, 2);
+insert into ingredient_diet_goals values(6, 39, 1);
+insert into ingredient_diet_goals values(7, 40, 1);
+insert into ingredient_diet_goals values(8, 41, 1);
+insert into ingredient_diet_goals values(9, 42, 1);
+insert into ingredient_diet_goals values(10, 43, 2);
+insert into ingredient_diet_goals values(11, 44, 1);
+insert into ingredient_diet_goals values(12, 45, 1);
+insert into ingredient_diet_goals values(13, 46, 1);
+insert into ingredient_diet_goals values(14, 47, 1);
+
+-- (1, 'Vegan'),(2, 'Vegetarian'),(3, 'Pescetarian'),(4, 'Keto');
+--39 1
+--40 1
+--41 1
+--42 1
+--43 2
+--44 1
+--45 1
+--46 1
+--47 1
 
 --hated foods
