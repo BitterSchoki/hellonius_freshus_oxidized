@@ -105,7 +105,13 @@ insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
 insert into recipe_ingredients values (21, 2, 46, 20, 'g');
 insert into recipe_ingredients values (22, 2, 47, 50, 'g');
 
--- FOOD GROUPS id, id ingredient, food group id (1, 'Lactose',
+-- Dumplings
+insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
+insert into recipe_ingredients values (21, 2, 46, 20, 'g');
+insert into recipe_ingredients values (22, 2, 47, 50, 'g');
+
+-- FOOD GROUPS 
+-- id, id ingredient, food group id (1, 'Lactose',
 -- 2, 'Gluten' 3, 'Histamines', 4, 'Seafood')
 insert into ingredient_food_groups values(1, 4, 3);
 insert into ingredient_food_groups values(2, 5, 3);
@@ -131,8 +137,7 @@ insert into ingredient_food_groups values(21, 45, 2);
 insert into ingredient_food_groups values(22, 46, 3);
 insert into ingredient_food_groups values(23, 47, 2);
 
-
---special diet
+-- SPECIAL DIETS
 --id, ingredient_id INTEGER NOT NULL, special_diet_id
 --(1, 'Low Carb'),(2, 'High Carb'),(3, 'High Fat'),(4,'Clean Eating');
 insert into ingredient_special_diets values(1, 34, 1);
@@ -154,7 +159,7 @@ insert into ingredient_special_diets values(17, 45, 2);
 insert into ingredient_special_diets values(18, 46, 4);
 insert into ingredient_special_diets values(18, 47, 2);
 
-
+-- DIETS GOALS
 -- diet gols id, ingredient_id INTEGER NOT NULL, diet_goal_id INT
 -- (1, 'Vegan'),(2, 'Vegetarian'),(3, 'Pescetarian'),(4, 'Keto');
 insert into ingredient_diet_goals values(1, 33, 1);
@@ -171,16 +176,3 @@ insert into ingredient_diet_goals values(11, 44, 1);
 insert into ingredient_diet_goals values(12, 45, 1);
 insert into ingredient_diet_goals values(13, 46, 1);
 insert into ingredient_diet_goals values(14, 47, 1);
-
--- (1, 'Vegan'),(2, 'Vegetarian'),(3, 'Pescetarian'),(4, 'Keto');
---39 1
---40 1
---41 1
---42 1
---43 2
---44 1
---45 1
---46 1
---47 1
-
---hated foods
