@@ -35,8 +35,7 @@ insert into ingredients values (22, 'Flour', '', 'flour');
 insert into ingredients values (23, 'Kidney beans', '', 'legumes');
 insert into ingredients values (24, 'Chickpeas', '', 'legumes');
 insert into ingredients values (25, 'Lentils', '', 'legumes');
-
-insert into ingredients values (25, 'Testparmesan2', '', 'parmesan');
+insert into ingredients values (26, 'Testparmesan2', '', 'parmesan');
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
 -- Unique, receipe id, ingridient id, amount, unit  
@@ -58,8 +57,8 @@ insert into ingredient_food_groups values(8, 15, 3);
 insert into ingredient_food_groups values(11, 18, 1);
 insert into ingredient_food_groups values(12, 19, 1);
 insert into ingredient_food_groups values(13, 20, 4);
-insert into ingredient_food_groups values(14, 21, 3);
-insert into ingredient_food_groups values(15, 22, 1);
-insert into ingredient_food_groups values(16, 35, 1);
+insert into ingredient_food_groups values(13, 21, 3);
+insert into ingredient_food_groups values(14, 22, 1);
+insert into ingredient_food_groups values(15, 26, 1);
 
 
