@@ -59,11 +59,10 @@ insert into ingredients values (38, 'Gluten free roll', '', 'roll');
 
 --Coclate Brownie
 insert into ingredients values (39, 'Coconut oil', '', 'oil'); 
-insert into ingredients values (40, 'Sugar', '', 'salat'); 
+insert into ingredients values (40, 'Sugar', '', 'sugar'); 
 insert into ingredients values (41, 'Cocoa Powder', '', 'cocoa');  
 insert into ingredients values (42, 'Banana', '', 'egg'); 
-insert into ingredients values (43, 'flour', '', 'roll'); 
-insert into ingredients values (44, 'Chocolate', '', 'choc'); 
+insert into ingredients values (43, 'Chocolate', '', 'choc'); 
 insert into ingredients values (44, 'Baking powder', '', 'bakpow'); 
 
 --Dumplings
@@ -71,13 +70,25 @@ insert into ingredients values (45, 'roll', '', 'roll');
 insert into ingredients values (46, 'Petersilie', '', 'herbs'); 
 insert into ingredients values (47, 'Semmelbrösel', '', 'roll');
 
-
+ --(1, 'Lactose',
+-- 2, 'Gluten' 3, 'Histamines', 4, 'Seafood')
+--39 3
+--40 
+--41 3
+--42
+--43
+--44
+--45
+--56
+--47
+--48
 --_______________________________________________________
 
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
 -- Unique, receipe id, ingridient id, amount, unit  
 --Mushroom Risotto
+
 insert into recipe_ingredients values (1, 1, 1, 500, 'g');
 insert into recipe_ingredients values (2, 1, 2, 100, 'g');
 insert into recipe_ingredients values (3, 1, 3, 1000, 'ml');
@@ -92,7 +103,6 @@ insert into recipe_ingredients values (11, 1, 11, 100, 'g');
 insert into recipe_ingredients values (12, 1, 12, 50, 'g');
 insert into recipe_ingredients values (13, 1, 13, 50, 'ml');
 insert into recipe_ingredients values (14, 1, 14, 20, 'g');
-
 insert into recipe_ingredients values (15, 3, 33, 7, 'g');
 insert into recipe_ingredients values (16, 3, 34, 50, 'g');
 insert into recipe_ingredients values (17, 3, 35, 2, 'pcs');
