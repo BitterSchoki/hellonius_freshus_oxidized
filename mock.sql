@@ -1,6 +1,9 @@
 --RECEIPS
 insert into recipes values (1, 'Mushroom-Risotto', 'A creamy italian dish', 2);
 insert into recipes values (2, 'Noodles with salmon cream sauce', 'A healthy noode receipe', 2);
+insert into recipes values (4, 'Dumplings', 'A Bavarian receipe', 2);
+insert into recipes values (5, 'Cheese cake', 'Be sweet today', 1);
+insert into recipes values (6, 'Leberkaese Burger', 'A Bavarian receipe', 4);
 
 --INGREDIENTS
 --Ingridients Mushroom Risotto
@@ -46,6 +49,16 @@ insert into ingredients values (31, 'Peanuts', '', 'nuts');
 insert into ingredients values (32, 'Tree nuts', '', 'nuts');
 
 
+--Leberkaese
+insert into ingredients values (33, 'Senf', '', 'senf');
+insert into ingredients values (34, 'Coleslaw', '', 'salat');
+insert into ingredients values (35, 'Radishes', '', 'radishes');
+insert into ingredients values (36, 'Leberkaese', '', 'leberkaese');
+insert into ingredients values (37, 'Lagenbroetchen', '', 'roll');
+
+--Leberkaese Ersatz 
+insert into ingredients values (38, 'Gluten free roll', '', 'roll');
+--- + meat replacement, soy
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
 -- Unique, receipe id, ingridient id, amount, unit  
