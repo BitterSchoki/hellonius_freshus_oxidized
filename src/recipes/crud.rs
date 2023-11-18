@@ -32,7 +32,8 @@ pub async fn read_recipe(mut db: Connection<db::Recipes>, id: i64) -> Option<Jso
                     title: r.i_title,
                     description: r.i_descr,
                 },
-                amount: (r.amount, &r.unit[..]).try_into()?,
+                amount: r.amount,
+                unit: r.unit[..].try_into()?,
             })
         })
         .collect();
@@ -41,7 +42,8 @@ pub async fn read_recipe(mut db: Connection<db::Recipes>, id: i64) -> Option<Jso
             title: f.i_title,
             description: f.i_descr,
         },
-        amount: (f.amount, &f.unit[..]).try_into().ok()?,
+        amount: f.amount,
+        unit: f.unit[..].try_into().ok()?,
     };
     let mut components: Vec<_> = components_res.ok()?;
     components.insert(0, first_comp);

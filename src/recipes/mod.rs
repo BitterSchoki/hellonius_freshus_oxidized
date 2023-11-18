@@ -17,7 +17,8 @@ struct Recipe {
 #[serde(crate = "rocket::serde")]
 struct RecipeComponent {
     ingredient: Ingredient,
-    amount: Amount,
+    amount: f64,
+    unit: Unit,
 }
 
 #[derive(Serialize)]
@@ -29,21 +30,21 @@ struct Ingredient {
 
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]
-enum Amount {
-    Grams(f64),
-    Pieces(f64),
-    Milliliters(f64), // and more ...
+enum Unit {
+    Grams,
+    Pieces,
+    Milliliters, // and more ...
 }
 
-impl TryFrom<(f64, &str)> for Amount {
+impl TryFrom<&str> for Unit {
     type Error = anyhow::Error;
 
-    fn try_from(value: (f64, &str)) -> Result<Self, Self::Error> {
+    fn try_from(value: &str) -> Result<Self, Self::Error> {
         match value {
-            (v, "g") => Ok(Amount::Grams(v)),
-            (v, "pcs") => Ok(Amount::Pieces(v)),
-            (v, "ml") => Ok(Amount::Milliliters(v)),
-            (_, unit) => Err(anyhow!("Unknown unit {}", unit)),
+            "g" => Ok(Unit::Grams),
+            "pcs" => Ok(Unit::Pieces),
+            "ml" => Ok(Unit::Milliliters),
+            unit => Err(anyhow!("Unknown unit {}", unit)),
         }
     }
 }
