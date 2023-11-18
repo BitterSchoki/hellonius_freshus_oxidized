@@ -14,4 +14,7 @@ pub struct Filters {
     pub food_groups: Vec<FoodGroup>,
     pub diet_goals: Vec<DietGoal>,
     pub special_diets: Vec<SpecialDiet>,
+
+    pub deadly: Vec<i64>,
+    pub avoid: Vec<i64>,
 }

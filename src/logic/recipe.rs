@@ -49,6 +49,9 @@ pub async fn filter_recipes(
         let mut with_components = load_components(db, recipe).await?;
         let mut components = Vec::with_capacity(with_components.components.len());
         for component in with_components.components {
+            if filters.deadly.contains(&component.ingredient.id) {
+                continue 'outer;
+            }
             if let Some(replacement) = replace_component(db, component, filters).await? {
                 components.push(replacement);
             } else {
@@ -80,6 +83,7 @@ async fn replace_component(
         .special_diets
         .iter()
         .all(|sd| ing.special_diets.contains(sd));
+    ok &= !filters.avoid.iter().any(|&a| a == ing.id);
     if !ok {
         // need to swap
         let replacement = find_replacements(db, &component, filters).await?.pop();
