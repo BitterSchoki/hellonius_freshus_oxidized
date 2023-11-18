@@ -17,7 +17,7 @@ insert into ingredients values (10, 'Pepper', '', 'pepper');
 insert into ingredients values (11, 'Parmesan', '', 'parmesan');
 insert into ingredients values (12, 'Butter', 'Animal based', 'butter');
 insert into ingredients values (13, 'Plant Oil', '', 'oil');
-insert into ingredients values (14, 'Basil', '', 'herbs');
+insert into ingredients values (14, 'Basil', '', 'basil');
 
 --Ingredients mushroom risotto vegan
 insert into ingredients values (15, 'Vegan white wine', 'wine');
@@ -27,7 +27,7 @@ insert into ingredients values (17, 'Vegan Parmesan', 'parmesan');
 -- More ingredients
 insert into ingredients values (18, 'Milk', '', 'milk');
 insert into ingredients values (19, 'Egg', '', 'egg');
-insert into ingredients values (20, 'Shrimps', '', 'fish');
+insert into ingredients values (20, 'Shellfish', '', 'fish');
 insert into ingredients values (21, 'Soy', '', 'meat');
 insert into ingredients values (22, 'Flour', '', 'flour');
 
@@ -36,6 +36,16 @@ insert into ingredients values (23, 'Kidney beans', '', 'legumes');
 insert into ingredients values (24, 'Chickpeas', '', 'legumes');
 insert into ingredients values (25, 'Lentils', '', 'legumes');
 insert into ingredients values (26, 'Testparmesan2', '', 'parmesan');
+
+--Disliked ingridients
+insert into ingredients values (27, 'Coriander', '', 'coriander');
+insert into ingredients values (28, 'Olives', '', 'olives');
+insert into ingredients values (29, 'Blue Cheese', '', 'cheese');
+insert into ingredients values (30, 'Coffee', '', 'coffee');
+insert into ingredients values (31, 'Peanuts', '', 'nuts');
+insert into ingredients values (32, 'Tree nuts', '', 'nuts');
+
+
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
 -- Unique, receipe id, ingridient id, amount, unit  
