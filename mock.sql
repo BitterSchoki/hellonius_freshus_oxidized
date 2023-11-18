@@ -29,7 +29,7 @@ insert into ingredients values (18, 'Milk', '', 'milk');
 insert into ingredients values (19, 'Egg', '', 'egg');
 insert into ingredients values (20, 'Shrimps', '', 'fish');
 insert into ingredients values (21, 'Soy', '', 'meat');
-insert into ingredients values (22, 'Mehl', '', 'flour');
+insert into ingredients values (22, 'Flour', '', 'flour');
 
 --Alternative legumes
 insert into ingredients values (23, 'Kidney beans', '', 'legumes');
