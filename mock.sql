@@ -48,11 +48,11 @@ insert into ingredients values (32, 'Tree nuts', '', 'nuts');
 
 
 --Leberkaese
-insert into ingredients values (33, 'Senf', '', 'senf');
-insert into ingredients values (34, 'Coleslaw', '', 'salat');
-insert into ingredients values (35, 'Radishes', '', 'radishes');
-insert into ingredients values (36, 'Leberkaese', '', 'leberkaese');
-insert into ingredients values (37, 'Lagenbroetchen', '', 'roll');
+insert into ingredients values (33, 'Senf', '', 'senf'); -- clean
+insert into ingredients values (34, 'Coleslaw', '', 'salat'); --lc
+insert into ingredients values (35, 'Radishes', '', 'radishes');  --lc
+insert into ingredients values (36, 'Leberkaese', '', 'leberkaese'); --hf
+insert into ingredients values (37, 'Lagenbroetchen', '', 'roll'); --hc
 
 --Leberkaese Ersatz 
 insert into ingredients values (38, 'Gluten free roll', '', 'roll');
@@ -82,4 +82,26 @@ insert into ingredient_food_groups values(12, 21, 3);
 insert into ingredient_food_groups values(13, 22, 1);
 insert into ingredient_food_groups values(14, 26, 1);
 
+--special diet
+--id, ingredient_id INTEGER NOT NULL, special_diet_id
+--(1, 'Low Carb'),(2, 'High Carb'),(3, 'High Fat'),(4,'Clean Eating');
+insert into ingredient_special_diets values(1, 34, 1);
+insert into ingredient_special_diets values(2, 37, 2);
+insert into ingredient_special_diets values(3, 36, 3);
+insert into ingredient_special_diets values(4, 11, 1);
+insert into ingredient_special_diets values(5, 35, 1);
+insert into ingredient_special_diets values(6, 38, 2);
+insert into ingredient_special_diets values(7, 1, 4);
+insert into ingredient_special_diets values(8, 33, 4);
+insert into ingredient_special_diets values(3, 16, 3);
 
+
+
+-- diet gols id, ingredient_id INTEGER NOT NULL, diet_goal_id INT
+-- (1, 'Vegan'),(2, 'Vegetarian'),(3, 'Pescetarian'),(4, 'Keto');
+insert into ingredient_diet_goals values(1, 4, 3);
+insert into ingredient_diet_goals values(2, 4, 3);
+insert into ingredient_diet_goals values(3, 4, 3);
+
+
+--hated foods
