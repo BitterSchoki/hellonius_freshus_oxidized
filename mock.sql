@@ -21,9 +21,9 @@ insert into ingredients values (13, 'Plant Oil', '', 'oil');
 insert into ingredients values (14, 'Basil', '', 'basil');
 
 --Ingredients mushroom risotto vegan
-insert into ingredients values (15, 'Vegan white wine', 'wine');
-insert into ingredients values (16, 'Vegan butter', 'butter');
-insert into ingredients values (17, 'Vegan Parmesan', 'parmesan');
+insert into ingredients values (15, 'Vegan white wine', '', 'wine');
+insert into ingredients values (16, 'Vegan butter', '', 'butter');
+insert into ingredients values (17, 'Vegan Parmesan', '','parmesan');
 
 -- More ingredients
 insert into ingredients values (18, 'Milk', '', 'milk');
@@ -75,11 +75,11 @@ insert into ingredient_food_groups values(5, 11, 3);
 insert into ingredient_food_groups values(6, 11, 1);
 insert into ingredient_food_groups values(7, 12, 1);
 insert into ingredient_food_groups values(8, 15, 3);
-insert into ingredient_food_groups values(11, 18, 1);
-insert into ingredient_food_groups values(12, 19, 1);
-insert into ingredient_food_groups values(13, 20, 4);
-insert into ingredient_food_groups values(13, 21, 3);
-insert into ingredient_food_groups values(14, 22, 1);
-insert into ingredient_food_groups values(15, 26, 1);
+insert into ingredient_food_groups values(9, 18, 1);
+insert into ingredient_food_groups values(10, 19, 1);
+insert into ingredient_food_groups values(11, 20, 4);
+insert into ingredient_food_groups values(12, 21, 3);
+insert into ingredient_food_groups values(13, 22, 1);
+insert into ingredient_food_groups values(14, 26, 1);
 
 
