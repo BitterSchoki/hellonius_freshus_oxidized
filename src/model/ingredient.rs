@@ -3,6 +3,7 @@ use rocket::serde::Serialize;
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct Ingredient {
+    pub id: i64,
     pub title: String,
     pub description: String,
     pub food_groups: Vec<FoodGroup>,
@@ -13,6 +14,7 @@ pub struct Ingredient {
 impl Default for Ingredient {
     fn default() -> Self {
         Self {
+            id: 0,
             title: String::new(),
             description: String::new(),
             food_groups: vec![],

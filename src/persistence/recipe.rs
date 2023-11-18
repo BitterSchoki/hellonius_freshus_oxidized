@@ -27,7 +27,7 @@ pub async fn get_recipe_components(
     id: i64,
 ) -> Result<Vec<RecipeComponent>, sqlx::Error> {
     let results = sqlx::query!(
-        "SELECT ri.amount, ri.unit, i.title, i.descr
+        "SELECT ri.amount, ri.unit, i.title, i.descr, i.id
         FROM recipes r
             JOIN recipe_ingredients ri ON r.id = ri.recipe_id
             JOIN ingredients i ON i.id = ri.ingredient_id
@@ -40,6 +40,7 @@ pub async fn get_recipe_components(
         .into_iter()
         .map(|r| RecipeComponent {
             ingredient: Ingredient {
+                id: r.id,
                 title: r.title,
                 description: r.descr,
                 ..Default::default()

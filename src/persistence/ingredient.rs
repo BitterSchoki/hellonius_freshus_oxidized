@@ -7,7 +7,7 @@ pub async fn get_ingredient(
     id: i64,
 ) -> Result<Option<Ingredient>, sqlx::Error> {
     sqlx::query!(
-        "SELECT title, descr
+        "SELECT id, title, descr
         FROM ingredients
         WHERE id = ?",
         id
@@ -16,6 +16,7 @@ pub async fn get_ingredient(
     .await
     .map(|r| {
         r.map(|r| Ingredient {
+            id: r.id,
             title: r.title,
             description: r.descr,
             ..Default::default()

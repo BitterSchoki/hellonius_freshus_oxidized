@@ -8,3 +8,5 @@ insert into ingredients values (3, 'Coconut Milk', 'Creamy!');
 insert into recipe_ingredients values (1, 1, 3, 500, 'ml');
 insert into recipe_ingredients values (2, 2, 1, 200, 'g');
 insert into recipe_ingredients values (3, 2, 2, 1.5, 'pcs');
+
+insert into ingredient_food_groups values (1, 1, 1);
