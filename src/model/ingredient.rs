@@ -2,6 +2,7 @@ use rocket::serde::{Deserialize, Serialize};
 
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]
+#[derive(Default)]
 pub struct Ingredient {
     pub id: i64,
     pub title: String,
@@ -9,19 +10,6 @@ pub struct Ingredient {
     pub food_groups: Vec<FoodGroup>,
     pub diet_goals: Vec<DietGoal>,
     pub special_diets: Vec<SpecialDiet>,
-}
-
-impl Default for Ingredient {
-    fn default() -> Self {
-        Self {
-            id: 0,
-            title: String::new(),
-            description: String::new(),
-            food_groups: vec![],
-            diet_goals: vec![],
-            special_diets: vec![],
-        }
-    }
 }
 
 // Note that the From<i64> trait implementations for the enums have to match the ids in the database.

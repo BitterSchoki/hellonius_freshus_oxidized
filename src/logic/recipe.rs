@@ -1,7 +1,5 @@
-use crate::model::{
-    DietGoal, Filters, FoodGroup, Ingredient, Recipe, RecipeComponent, SpecialDiet, Unit,
-};
-use crate::persistence::{ingredient, recipe as recipe_db};
+use crate::model::{Filters, Ingredient, Recipe, RecipeComponent, Unit};
+use crate::persistence::recipe as recipe_db;
 
 pub async fn get_recipe_with_components(
     db: &mut sqlx::SqliteConnection,
@@ -92,9 +90,9 @@ async fn replace_component(
 }
 
 async fn find_replacements(
-    db: &mut sqlx::SqliteConnection,
-    component: &RecipeComponent,
-    filters: &Filters,
+    _db: &mut sqlx::SqliteConnection,
+    _component: &RecipeComponent,
+    _filters: &Filters,
 ) -> Result<Vec<RecipeComponent>, sqlx::Error> {
     // TODO
     Ok(vec![RecipeComponent {

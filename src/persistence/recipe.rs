@@ -1,4 +1,4 @@
-use crate::model::{FoodGroup, Ingredient, Recipe, RecipeComponent};
+use crate::model::{Ingredient, Recipe, RecipeComponent};
 
 pub async fn get_recipe(
     db: &mut sqlx::SqliteConnection,
