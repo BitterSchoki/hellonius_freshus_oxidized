@@ -14,3 +14,16 @@ pub async fn get_ingredient_with_tags(
         ..i
     }))
 }
+
+pub async fn load_tags(
+    db: &mut sqlx::SqliteConnection,
+    ingredient: Ingredient,
+) -> Result<Ingredient, sqlx::Error> {
+    let (groups, goals, diets) = ingredient_db::get_ingredient_tags(db, ingredient.id).await?;
+    Ok(Ingredient {
+        food_groups: groups,
+        diet_goals: goals,
+        special_diets: diets,
+        ..ingredient
+    })
+}

@@ -1,8 +1,10 @@
-use rocket::serde::Serialize;
+use rocket::serde::{Deserialize, Serialize};
 
-#[derive(Serialize)]
+#[derive(Clone, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
+#[derive(Default)]
 pub struct Ingredient {
+    pub id: i64,
     pub title: String,
     pub description: String,
     pub food_groups: Vec<FoodGroup>,
@@ -10,21 +12,9 @@ pub struct Ingredient {
     pub special_diets: Vec<SpecialDiet>,
 }
 
-impl Default for Ingredient {
-    fn default() -> Self {
-        Self {
-            title: String::new(),
-            description: String::new(),
-            food_groups: vec![],
-            diet_goals: vec![],
-            special_diets: vec![],
-        }
-    }
-}
-
 // Note that the From<i64> trait implementations for the enums have to match the ids in the database.
 
-#[derive(Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum FoodGroup {
     Lactose,
@@ -45,7 +35,7 @@ impl From<i64> for FoodGroup {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum DietGoal {
     LowCarb,
@@ -66,7 +56,7 @@ impl From<i64> for DietGoal {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum SpecialDiet {
     Vegan,

@@ -5,7 +5,7 @@ pub async fn get_recipe(
     id: i64,
 ) -> Result<Option<Recipe>, sqlx::Error> {
     sqlx::query!(
-        "SELECT title, serves, descr
+        "SELECT id, title, serves, descr
         FROM recipes
         WHERE id = ?",
         id
@@ -14,6 +14,7 @@ pub async fn get_recipe(
     .await
     .map(|r| {
         r.map(|r| Recipe {
+            id: r.id,
             title: r.title,
             description: r.descr,
             serves: r.serves,
@@ -27,7 +28,7 @@ pub async fn get_recipe_components(
     id: i64,
 ) -> Result<Vec<RecipeComponent>, sqlx::Error> {
     let results = sqlx::query!(
-        "SELECT ri.amount, ri.unit, i.title, i.descr
+        "SELECT ri.amount, ri.unit, i.title, i.descr, i.id
         FROM recipes r
             JOIN recipe_ingredients ri ON r.id = ri.recipe_id
             JOIN ingredients i ON i.id = ri.ingredient_id
@@ -40,12 +41,59 @@ pub async fn get_recipe_components(
         .into_iter()
         .map(|r| RecipeComponent {
             ingredient: Ingredient {
+                id: r.id,
                 title: r.title,
                 description: r.descr,
                 ..Default::default()
             },
             amount: r.amount,
             unit: r.unit[..].into(),
+            ..Default::default()
         })
         .collect())
+}
+
+pub async fn all_recipes(db: &mut sqlx::SqliteConnection) -> Result<Vec<Recipe>, sqlx::Error> {
+    let recipes = sqlx::query!(
+        "SELECT id, title, serves, descr
+        FROM recipes"
+    )
+    .fetch_all(db)
+    .await?
+    .into_iter()
+    .map(|r| Recipe {
+        id: r.id,
+        title: r.title,
+        description: r.descr,
+        serves: r.serves,
+        components: vec![],
+    })
+    .collect();
+    Ok(recipes)
+}
+
+pub async fn recipes_by_keyword(
+    db: &mut sqlx::SqliteConnection,
+    keyword: &str,
+) -> Result<Vec<Recipe>, sqlx::Error> {
+    let recipes = sqlx::query!(
+        "SELECT id, title, serves, descr
+        FROM recipes
+        WHERE lower(title) LIKE '%' || lower(?) || '%'
+            OR lower(descr) LIKE '%' || lower(?) || '%'",
+        keyword,
+        keyword
+    )
+    .fetch_all(db)
+    .await?
+    .into_iter()
+    .map(|r| Recipe {
+        id: r.id,
+        title: r.title,
+        description: r.descr,
+        serves: r.serves,
+        components: vec![],
+    })
+    .collect();
+    Ok(recipes)
 }

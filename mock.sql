@@ -47,11 +47,11 @@ insert into ingredients values (31, 'Peanuts', '', 'nuts');
 insert into ingredients values (32, 'Tree nuts', '', 'nuts');
 
 --Leberkaese
-insert into ingredients values (33, 'Senf', '', 'senf'); 
-insert into ingredients values (34, 'Coleslaw', '', 'salat'); 
-insert into ingredients values (35, 'Radishes', '', 'radishes');  
-insert into ingredients values (36, 'Leberkaese', '', 'leberkaese'); 
-insert into ingredients values (37, 'Laugenbroetchen', '', 'roll'); 
+insert into ingredients values (33, 'Senf', '', 'senf');
+insert into ingredients values (34, 'Coleslaw', '', 'salat');
+insert into ingredients values (35, 'Radishes', '', 'radishes');
+insert into ingredients values (36, 'Leberkaese', '', 'leberkaese');
+insert into ingredients values (37, 'Laugenbroetchen', '', 'roll');
 
 --Leberkaese Ersatz 
 insert into ingredients values (38, 'Gluten free roll', '', 'roll');
