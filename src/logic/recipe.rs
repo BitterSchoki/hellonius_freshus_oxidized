@@ -93,7 +93,7 @@ async fn replace_component(
     }
 }
 
-async fn find_replacements(
+pub async fn find_replacements(
     db: &mut sqlx::SqliteConnection,
     component: &RecipeComponent,
     filters: &Filters,

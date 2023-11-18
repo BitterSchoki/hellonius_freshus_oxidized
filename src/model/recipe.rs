@@ -1,4 +1,4 @@
-use rocket::serde::Serialize;
+use rocket::serde::{Deserialize, Serialize};
 
 use super::ingredient::Ingredient;
 
@@ -12,7 +12,7 @@ pub struct Recipe {
     pub components: Vec<RecipeComponent>,
 }
 
-#[derive(Clone, Default, Serialize)]
+#[derive(Clone, Default, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct RecipeComponent {
     pub ingredient: Ingredient,
@@ -21,7 +21,7 @@ pub struct RecipeComponent {
     pub was_replaced: bool,
 }
 
-#[derive(Clone, Copy, Serialize)]
+#[derive(Clone, Copy, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum Unit {
     Grams,
