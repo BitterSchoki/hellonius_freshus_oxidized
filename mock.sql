@@ -1,9 +1,7 @@
 --RECEIPS
 insert into recipes values (1, 'Mushroom-Risotto', 'A creamy italian dish', 2);
-insert into recipes values (2, 'Noodles with salmon cream sauce', 'A healthy noode receipe', 2);
-insert into recipes values (4, 'Dumplings', 'A Bavarian receipe', 2);
-insert into recipes values (5, 'Cheese cake', 'Be sweet today', 1);
-insert into recipes values (6, 'Leberkaese Burger', 'A Bavarian receipe', 4);
+insert into recipes values (2, 'Dumplings', 'A Bavarian receipe', 2);
+insert into recipes values (3, 'Leberkaese Burger', 'A Bavarian receipe', 4);
 
 --INGREDIENTS
 --Ingridients Mushroom Risotto
