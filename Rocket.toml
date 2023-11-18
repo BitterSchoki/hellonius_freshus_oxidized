@@ -1,0 +1,2 @@
+[default.databases.sqlite_recipes]
+url = "./recipes.sqlite"

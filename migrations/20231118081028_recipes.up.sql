@@ -1,0 +1,28 @@
+-- enable foreign keys
+PRAGMA foreign_keys = ON;
+
+-- create recipes table
+CREATE TABLE recipes (
+    id INTEGER PRIMARY KEY,
+    title TEXT NOT NULL,
+    descr TEXT NOT NULL,
+    serves INTEGER NOT NULL
+);
+
+-- create ingredients table
+CREATE TABLE ingredients (
+    id INTEGER PRIMARY KEY,
+    title TEXT NOT NULL,
+    descr TEXT NOT NULL
+);
+
+-- create recipe_ingredients table
+CREATE TABLE recipe_ingredients (
+    id INTEGER PRIMARY KEY,
+    recipe_id INTEGER NOT NULL,
+    ingredient_id INTEGER NOT NULL,
+    amount DECIMAL NOT NULL,
+    unit TEXT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
