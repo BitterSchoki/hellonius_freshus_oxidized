@@ -58,8 +58,8 @@ insert into ingredient_food_groups values(8, 15, 3);
 insert into ingredient_food_groups values(11, 18, 1);
 insert into ingredient_food_groups values(12, 19, 1);
 insert into ingredient_food_groups values(13, 20, 4);
-insert into ingredient_food_groups values(13, 21, 3);
-insert into ingredient_food_groups values(14, 22, 1);
-insert into ingredient_food_groups values(15, 35, 1);
+insert into ingredient_food_groups values(14, 21, 3);
+insert into ingredient_food_groups values(15, 22, 1);
+insert into ingredient_food_groups values(16, 35, 1);
 
 
