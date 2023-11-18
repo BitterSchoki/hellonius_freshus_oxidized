@@ -5,6 +5,7 @@ use super::ingredient::Ingredient;
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct Recipe {
+    pub id: i64,
     pub title: String,
     pub description: String,
     pub serves: i64,

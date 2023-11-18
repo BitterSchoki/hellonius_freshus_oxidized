@@ -1,11 +1,11 @@
-use crate::model::{Ingredient, Recipe, RecipeComponent};
+use crate::model::{FoodGroup, Ingredient, Recipe, RecipeComponent};
 
 pub async fn get_recipe(
     db: &mut sqlx::SqliteConnection,
     id: i64,
 ) -> Result<Option<Recipe>, sqlx::Error> {
     sqlx::query!(
-        "SELECT title, serves, descr
+        "SELECT id, title, serves, descr
         FROM recipes
         WHERE id = ?",
         id
@@ -14,6 +14,7 @@ pub async fn get_recipe(
     .await
     .map(|r| {
         r.map(|r| Recipe {
+            id: r.id,
             title: r.title,
             description: r.descr,
             serves: r.serves,
@@ -49,4 +50,23 @@ pub async fn get_recipe_components(
             unit: r.unit[..].into(),
         })
         .collect())
+}
+
+pub async fn all_recipes(db: &mut sqlx::SqliteConnection) -> Result<Vec<Recipe>, sqlx::Error> {
+    let recipes = sqlx::query!(
+        "SELECT id, title, serves, descr
+        FROM recipes"
+    )
+    .fetch_all(db)
+    .await?
+    .into_iter()
+    .map(|r| Recipe {
+        id: r.id,
+        title: r.title,
+        description: r.descr,
+        serves: r.serves,
+        components: vec![],
+    })
+    .collect();
+    Ok(recipes)
 }
