@@ -4,32 +4,39 @@ insert into recipes values (2, 'Noodles with salmon cream sauce', 'A healthy noo
 
 --INGREDIENTS
 --Ingridients Mushroom Risotto
-insert into ingredients values (1, 'Mushrooms', 'Stone');
-insert into ingredients values (2, 'Mushrooms', 'Normal');
-insert into ingredients values (3, 'Water', 'Tap');
-insert into ingredients values (4, 'Onions', '');
-insert into ingredients values (5, 'Garlic', '');
-insert into ingredients values (6, 'Rice', 'For risotto');
-insert into ingredients values (7, 'Rice', 'Basmati');
-insert into ingredients values (8, 'Frozen peas', '');
-insert into ingredients values (9, 'Salt', '');
-insert into ingredients values (10, 'Pepper', '');
-insert into ingredients values (11, 'Parmesan', '');
-insert into ingredients values (12, 'Butter', '');
-insert into ingredients values (13, 'Plant Oil', '');
-insert into ingredients values (14, 'Basil', '');
+insert into ingredients values (1, 'Mushrooms', 'Stone','mushrooms');
+insert into ingredients values (2, 'Mushrooms', 'Normal', 'mushrooms');
+insert into ingredients values (3, 'Water', 'Tap','x');
+insert into ingredients values (4, 'Onions', '','onions');
+insert into ingredients values (5, 'Garlic', '', 'garlic');
+insert into ingredients values (6, 'Rice', 'For risotto', 'rice');
+insert into ingredients values (7, 'Rice', 'Basmati','rice');
+insert into ingredients values (8, 'Frozen peas', '', 'legume');
+insert into ingredients values (9, 'Salt', '','salt');
+insert into ingredients values (10, 'Pepper', '', 'pepper');
+insert into ingredients values (11, 'Parmesan', '', 'parmesan');
+insert into ingredients values (12, 'Butter', 'Animal based', 'butter');
+insert into ingredients values (13, 'Plant Oil', '', 'oil');
+insert into ingredients values (14, 'Basil', '', 'herbs');
 
 --Ingredients mushroom risotto vegan
-insert into ingredients values (15, 'Vegan white wine', '');
-insert into ingredients values (16, 'Vegan butter', '');
-insert into ingredients values (17, 'Vegan Parmesan', '');
+insert into ingredients values (15, 'Vegan white wine', 'wine');
+insert into ingredients values (16, 'Vegan butter', 'butter');
+insert into ingredients values (17, 'Vegan Parmesan', 'parmesan');
 
 -- More ingredients
-insert into ingredients values (18, 'Milk', '');
-insert into ingredients values (19, 'Egg', '');
-insert into ingredients values (20, 'Shrimps', '');
-insert into ingredients values (21, 'Soy', '');
-insert into ingredients values (22, 'Mehl', '');
+insert into ingredients values (18, 'Milk', '', 'milk');
+insert into ingredients values (19, 'Egg', '', 'egg');
+insert into ingredients values (20, 'Shrimps', '', 'fish');
+insert into ingredients values (21, 'Soy', '', 'meat');
+insert into ingredients values (22, 'Mehl', '', 'flour');
+
+--Alternative legumes
+insert into ingredients values (23, 'Kidney beans', '', 'legumes');
+insert into ingredients values (24, 'Chickpeas', '', 'legumes');
+insert into ingredients values (25, 'Lentils', '', 'legumes');
+
+insert into ingredients values (25, 'Testparmesan2', '', 'parmesan');
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
 -- Unique, receipe id, ingridient id, amount, unit  
@@ -53,5 +60,6 @@ insert into ingredient_food_groups values(12, 19, 1);
 insert into ingredient_food_groups values(13, 20, 4);
 insert into ingredient_food_groups values(13, 21, 3);
 insert into ingredient_food_groups values(14, 22, 1);
+insert into ingredient_food_groups values(15, 35, 1);
 
 
