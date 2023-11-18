@@ -70,3 +70,30 @@ pub async fn get_ingredient_tags(
 
     Ok((groups, goals, diets))
 }
+
+pub async fn get_equivalent_ingredients(
+    db: &mut sqlx::SqliteConnection,
+    id: i64,
+) -> Result<Vec<Ingredient>, sqlx::Error> {
+    let results = sqlx::query!(
+        "SELECT i.id, i.title, i.descr
+        FROM ingredients i
+        WHERE i.equivalence = (
+            SELECT equivalence
+            FROM ingredients
+            WHERE id = ?
+        )",
+        id
+    )
+    .fetch_all(db)
+    .await?
+    .into_iter()
+    .map(|r| Ingredient {
+        id: r.id.unwrap_or(-1), // This is a hack, no idea, why this is an Option in the first place. The column is the primary key
+        title: r.title,
+        description: r.descr,
+        ..Default::default()
+    })
+    .collect();
+    Ok(results)
+}

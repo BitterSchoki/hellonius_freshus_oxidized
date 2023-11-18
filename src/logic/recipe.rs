@@ -1,4 +1,5 @@
 use crate::model::{Filters, Ingredient, Recipe, RecipeComponent, Unit};
+use crate::persistence::ingredient as ingredient_db;
 use crate::persistence::recipe as recipe_db;
 
 pub async fn get_recipe_with_components(
@@ -98,10 +99,38 @@ pub async fn find_replacements(
     component: &RecipeComponent,
     filters: &Filters,
 ) -> Result<Vec<RecipeComponent>, sqlx::Error> {
-    // TODO
-    Ok(vec![RecipeComponent {
-        was_replaced: true,
-        ..component.clone()
-    }])
-    // Ok(vec![])
+    let equiv = ingredient_db::get_equivalent_ingredients(db, component.ingredient.id).await?;
+    let mut equiv_tags = Vec::with_capacity(equiv.len());
+    for i in equiv.into_iter() {
+        equiv_tags.push(crate::logic::ingredient::load_tags(db, i).await?);
+    }
+
+    // Get satisfying ingredients
+    let sat = equiv_tags
+        .into_iter()
+        .filter(|i| {
+            let mut ok = !filters
+                .food_groups
+                .iter()
+                .any(|fg| i.food_groups.contains(fg));
+            ok &= filters
+                .diet_goals
+                .iter()
+                .all(|dg| i.diet_goals.contains(dg));
+            ok &= filters
+                .special_diets
+                .iter()
+                .all(|sd| i.special_diets.contains(sd));
+            ok &= !filters.avoid.iter().any(|&a| a == i.id);
+            ok
+        })
+        .map(|i| RecipeComponent {
+            ingredient: i,
+            amount: component.amount,
+            unit: component.unit,
+            was_replaced: true,
+        })
+        .collect();
+
+    Ok(sat)
 }
