@@ -23,6 +23,7 @@ CREATE TABLE recipe_ingredients (
     ingredient_id INTEGER NOT NULL,
     amount FLOAT NOT NULL,
     unit TEXT NOT NULL,
+    UNIQUE (recipe_id, ingredient_id),
     FOREIGN KEY (recipe_id) REFERENCES recipes(id),
     FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
 );
