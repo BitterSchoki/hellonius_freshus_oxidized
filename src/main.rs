@@ -2,9 +2,12 @@
 extern crate rocket;
 
 mod db;
-mod recipes;
+mod logic;
+mod model;
+mod persistence;
+mod routes;
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().attach(db::stage()).attach(recipes::stage())
+    rocket::build().attach(db::stage()).attach(routes::stage())
 }
