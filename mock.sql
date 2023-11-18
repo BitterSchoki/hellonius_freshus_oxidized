@@ -86,9 +86,9 @@ insert into ingredients values (47, 'Semmelbrösel', '', 'roll');
 
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
--- Unique, receipe id, ingridient id, amount, unit  
---Mushroom Risotto
+-- Unique, receipe id, ingridient id, amount, unit
 
+--Mushroom Risotto
 insert into recipe_ingredients values (1, 1, 1, 500, 'g');
 insert into recipe_ingredients values (2, 1, 2, 100, 'g');
 insert into recipe_ingredients values (3, 1, 3, 1000, 'ml');
@@ -103,11 +103,18 @@ insert into recipe_ingredients values (11, 1, 11, 100, 'g');
 insert into recipe_ingredients values (12, 1, 12, 50, 'g');
 insert into recipe_ingredients values (13, 1, 13, 50, 'ml');
 insert into recipe_ingredients values (14, 1, 14, 20, 'g');
+
+-- Leberkasburger
 insert into recipe_ingredients values (15, 3, 33, 7, 'g');
 insert into recipe_ingredients values (16, 3, 34, 50, 'g');
 insert into recipe_ingredients values (17, 3, 35, 2, 'pcs');
 insert into recipe_ingredients values (18, 3, 36, 2, 'pcs');
 insert into recipe_ingredients values (19, 3, 37, 1, 'pcs');
+
+-- Dumplings
+insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
+insert into recipe_ingredients values (21, 2, 46, 20, 'g');
+insert into recipe_ingredients values (22, 2, 47, 50, 'g');
 
 -- FOOD GROUPS id, id ingredient, food group id (1, 'Lactose',
 -- 2, 'Gluten' 3, 'Histamines', 4, 'Seafood')
