@@ -1,5 +1,7 @@
 use rocket::serde::Serialize;
 
+use super::ingredient::Ingredient;
+
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct Recipe {
@@ -15,13 +17,6 @@ pub struct RecipeComponent {
     pub ingredient: Ingredient,
     pub amount: f64,
     pub unit: Unit,
-}
-
-#[derive(Serialize)]
-#[serde(crate = "rocket::serde")]
-pub struct Ingredient {
-    pub title: String,
-    pub description: String,
 }
 
 #[derive(Serialize)]
