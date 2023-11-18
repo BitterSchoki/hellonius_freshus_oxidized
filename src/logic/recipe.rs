@@ -94,20 +94,14 @@ async fn replace_component(
 }
 
 async fn find_replacements(
-    _db: &mut sqlx::SqliteConnection,
-    _component: &RecipeComponent,
-    _filters: &Filters,
+    db: &mut sqlx::SqliteConnection,
+    component: &RecipeComponent,
+    filters: &Filters,
 ) -> Result<Vec<RecipeComponent>, sqlx::Error> {
     // TODO
     Ok(vec![RecipeComponent {
-        ingredient: Ingredient {
-            id: -1,
-            title: "Replaced".into(),
-            description: "".into(),
-            ..Default::default()
-        },
-        amount: 0.0,
-        unit: Unit::Grams,
+        was_replaced: true,
+        ..component.clone()
     }])
     // Ok(vec![])
 }

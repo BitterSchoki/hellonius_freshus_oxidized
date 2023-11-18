@@ -48,6 +48,7 @@ pub async fn get_recipe_components(
             },
             amount: r.amount,
             unit: r.unit[..].into(),
+            ..Default::default()
         })
         .collect())
 }

@@ -12,20 +12,27 @@ pub struct Recipe {
     pub components: Vec<RecipeComponent>,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Default, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct RecipeComponent {
     pub ingredient: Ingredient,
     pub amount: f64,
     pub unit: Unit,
+    pub was_replaced: bool,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Copy, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum Unit {
     Grams,
     Pieces,
     Milliliters, // and more ...
+}
+
+impl Default for Unit {
+    fn default() -> Self {
+        Unit::Grams
+    }
 }
 
 impl From<&str> for Unit {

@@ -1,6 +1,6 @@
 use rocket::serde::{Deserialize, Serialize};
 
-#[derive(Serialize)]
+#[derive(Clone, Serialize)]
 #[serde(crate = "rocket::serde")]
 #[derive(Default)]
 pub struct Ingredient {
@@ -14,7 +14,7 @@ pub struct Ingredient {
 
 // Note that the From<i64> trait implementations for the enums have to match the ids in the database.
 
-#[derive(Eq, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum FoodGroup {
     Lactose,
@@ -35,7 +35,7 @@ impl From<i64> for FoodGroup {
     }
 }
 
-#[derive(Eq, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum DietGoal {
     LowCarb,
@@ -56,7 +56,7 @@ impl From<i64> for DietGoal {
     }
 }
 
-#[derive(Eq, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum SpecialDiet {
     Vegan,
