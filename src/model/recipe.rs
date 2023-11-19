@@ -20,6 +20,7 @@ pub struct RecipeComponent {
     pub amount: f64,
     pub unit: Unit,
     pub was_replaced: bool,
+    pub is_removed: bool,
     pub optional: bool,
 }
 

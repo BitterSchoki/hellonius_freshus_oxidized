@@ -54,12 +54,15 @@ pub async fn filter_recipes(
                 continue 'outer;
             }
             let optional = component.optional;
-            if let Some(replacement) = replace_component(db, component, filters).await? {
+            if let Some(replacement) = replace_component(db, component.clone(), filters).await? {
                 components.push(replacement);
             } else {
                 if optional {
-                    // Just drop the optional component
-                    continue;
+                    let removed = RecipeComponent {
+                        is_removed: true,
+                        ..component
+                    };
+                    components.push(removed);
                 } else {
                     // If a required component can't be replaced, drop the whole recipe
                     continue 'outer;
@@ -105,6 +108,7 @@ pub async fn find_replacements(
             amount: component.amount,
             unit: component.unit,
             was_replaced: true,
+            is_removed: false,
             optional: component.optional,
         })
         .collect();
