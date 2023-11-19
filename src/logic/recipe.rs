@@ -71,24 +71,8 @@ async fn replace_component(
     filters: &Filters,
 ) -> Result<Option<RecipeComponent>, sqlx::Error> {
     component.ingredient = crate::logic::ingredient::load_tags(db, component.ingredient).await?;
-    let ing = &component.ingredient;
-    let mut ok = !filters
-        .food_groups
-        .iter()
-        .any(|fg| ing.food_groups.contains(fg));
-    ok &= filters
-        .diet_goals
-        .iter()
-        .all(|dg| ing.diet_goals.contains(dg));
-    ok &= filters
-        .special_diets
-        .iter()
-        .all(|sd| ing.special_diets.contains(sd));
-    ok &= !filters.avoid.iter().any(|&a| a == ing.id);
-    if !ok {
-        // need to swap
-        let replacement = find_replacements(db, &component, filters).await?.pop();
-        Ok(replacement)
+    if !filters.apply(&component.ingredient) {
+        Ok(find_replacements(db, &component, filters).await?.pop())
     } else {
         Ok(Some(component))
     }
@@ -108,22 +92,7 @@ pub async fn find_replacements(
     // Get satisfying ingredients
     let sat = equiv_tags
         .into_iter()
-        .filter(|i| {
-            let mut ok = !filters
-                .food_groups
-                .iter()
-                .any(|fg| i.food_groups.contains(fg));
-            ok &= filters
-                .diet_goals
-                .iter()
-                .all(|dg| i.diet_goals.contains(dg));
-            ok &= filters
-                .special_diets
-                .iter()
-                .all(|sd| i.special_diets.contains(sd));
-            ok &= !filters.avoid.iter().any(|&a| a == i.id);
-            ok
-        })
+        .filter(|i| filters.apply(i))
         .map(|i| RecipeComponent {
             ingredient: i,
             amount: component.amount,
