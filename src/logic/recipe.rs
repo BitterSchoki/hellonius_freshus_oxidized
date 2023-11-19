@@ -53,10 +53,17 @@ pub async fn filter_recipes(
             if filters.deadly.contains(&component.ingredient.id) {
                 continue 'outer;
             }
+            let optional = component.optional;
             if let Some(replacement) = replace_component(db, component, filters).await? {
                 components.push(replacement);
             } else {
-                continue 'outer;
+                if optional {
+                    // Just drop the optional component
+                    continue;
+                } else {
+                    // If a required component can't be replaced, drop the whole recipe
+                    continue 'outer;
+                }
             }
         }
         with_components.components = components;
@@ -98,6 +105,7 @@ pub async fn find_replacements(
             amount: component.amount,
             unit: component.unit,
             was_replaced: true,
+            optional: component.optional,
         })
         .collect();
 
