@@ -32,7 +32,7 @@ impl Filters {
         ok &= self
             .special_diets
             .iter()
-            .all(|sd| ingredient.special_diets.contains(sd));
+            .all(|sd| ingredient.special_diets.iter().all(|is| is <= sd));
         ok &= !self.avoid.iter().any(|&a| a == ingredient.id);
         ok
     }

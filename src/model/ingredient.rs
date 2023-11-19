@@ -56,7 +56,7 @@ impl From<i64> for DietGoal {
     }
 }
 
-#[derive(Clone, Copy, Eq, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Copy, Eq, PartialEq, PartialOrd, Ord, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub enum SpecialDiet {
     Vegan,
