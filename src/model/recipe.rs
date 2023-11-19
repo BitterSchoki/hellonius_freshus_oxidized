@@ -20,6 +20,7 @@ pub struct RecipeComponent {
     pub amount: f64,
     pub unit: Unit,
     pub was_replaced: bool,
+    pub old_ingredient: Option<Ingredient>,
     pub is_removed: bool,
     pub optional: bool,
 }

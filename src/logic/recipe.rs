@@ -108,6 +108,7 @@ pub async fn find_replacements(
             amount: component.amount,
             unit: component.unit,
             was_replaced: true,
+            old_ingredient: Some(component.ingredient.clone()),
             is_removed: false,
             optional: component.optional,
         })
