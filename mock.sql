@@ -86,7 +86,9 @@ insert into ingredients values
 insert into ingredients values
     (48, 'Cream', '', 'cream'),
     (49, 'Soy cream', '', 'cream'),
-    (50, 'Plant-based Leberkas (TM)', 'No liver, no cheese, entirely vegan', 'leberkaese');
+    (50, 'Plant-based Leberkas (TM)', 'No liver, no cheese, entirely vegan', 'leberkaese'),
+    (51, 'Chicken', '', 'chick'),
+    (52, 'Beef', '', 'beef');
 
 --_______________________________________________________
 
