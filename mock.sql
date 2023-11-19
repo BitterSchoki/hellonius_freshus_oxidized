@@ -1,4 +1,4 @@
---RECEIPS
+--RECIPES
 insert into recipes values (1, 'Mushroom-Risotto', 'A creamy italian dish', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.bgYmIo8ata1o2ifT385NnAHaHa%26pid%3DApi&f=1&ipt=08604a185782e4e904ac3a12e369b6ac1534c02811b607f62a91c927552764d3&ipo=images');
 insert into recipes values (2, 'Dumplings', 'A Bavarian receipe', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.YWvT_e0FJJ4S50KCIqhUPgHaFj%26pid%3DApi&f=1&ipt=aa0eaa922ea65abaf5e583b615c077b3320c8156ce382ba43994824c7fb3c01d&ipo=images');
 insert into recipes values (3, 'Leberkaese Burger', 'A Bavarian receipe', 4, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.9MbDLrIfGBcyPvLKY_bnjwHaHa%26pid%3DApi&f=1&ipt=29f655a42c7228a68020ba659bdd24b89e9a64f471786572285925fb19e1290a&ipo=images');
@@ -67,52 +67,53 @@ insert into ingredients values (43, 'Chocolate', '', 'choc');
 insert into ingredients values (44, 'Baking powder', '', 'bakpow'); 
 
 --Dumplings
-insert into ingredients values (45, 'roll', '', 'roll'); 
-insert into ingredients values (46, 'Petersilie', '', 'herbs'); 
-insert into ingredients values (47, 'Semmelbrösel', '', 'roll');
+insert into ingredients values (45, 'Roll', '', 'roll'); 
+insert into ingredients values (46, 'Parsely', '', 'herbs'); 
+insert into ingredients values (47, 'Breadcrumbs', '', 'roll');
 
 
 --_______________________________________________________
 
 
 -- AMOUNT AND ADD INGREDIENTS TO RECIPE
--- Unique, receipe id, ingridient id, amount, unit
+-- Unique, receipe id, ingridient id, amount, unit, optional
 
 --Mushroom Risotto
-insert into recipe_ingredients values (1, 1, 1, 500, 'g');
-insert into recipe_ingredients values (2, 1, 2, 100, 'g');
-insert into recipe_ingredients values (3, 1, 3, 1000, 'ml');
-insert into recipe_ingredients values (4, 1, 4, 1, 'pcs');
-insert into recipe_ingredients values (5, 1, 5, 2, 'pcs');
-insert into recipe_ingredients values (6, 1, 6, 200, 'g');
-insert into recipe_ingredients values (7, 1, 7, 200, 'g');
-insert into recipe_ingredients values (8, 1, 8, 100, 'g');
-insert into recipe_ingredients values (9, 1, 9, 5, 'g');
-insert into recipe_ingredients values (10, 1, 10, 8, 'g');
-insert into recipe_ingredients values (11, 1, 11, 100, 'g');
-insert into recipe_ingredients values (12, 1, 12, 50, 'g');
-insert into recipe_ingredients values (13, 1, 13, 50, 'ml');
-insert into recipe_ingredients values (14, 1, 14, 20, 'g');
+insert into recipe_ingredients values (1, 1, 1, 500, 'g', TRUE);
+insert into recipe_ingredients values (2, 1, 2, 100, 'g', FALSE);
+insert into recipe_ingredients values (3, 1, 3, 1000, 'ml', FALSE);
+insert into recipe_ingredients values (4, 1, 4, 1, 'pcs', TRUE);
+insert into recipe_ingredients values (5, 1, 5, 2, 'pcs', TRUE);
+insert into recipe_ingredients values (6, 1, 6, 200, 'g', FALSE);
+insert into recipe_ingredients values (8, 1, 8, 100, 'g', TRUE);
+insert into recipe_ingredients values (9, 1, 9, 5, 'g', TRUE);
+insert into recipe_ingredients values (10, 1, 10, 8, 'g', TRUE);
+insert into recipe_ingredients values (11, 1, 11, 100, 'g', TRUE);
+insert into recipe_ingredients values (12, 1, 12, 50, 'g', TRUE);
+insert into recipe_ingredients values (13, 1, 13, 50, 'ml', TRUE);
+insert into recipe_ingredients values (14, 1, 14, 20, 'g', TRUE);
+insert into recipe_ingredients values (29, 1, 27, 10, 'g', TRUE);
 
 -- Leberkasburger
-insert into recipe_ingredients values (15, 3, 33, 7, 'g');
-insert into recipe_ingredients values (16, 3, 34, 50, 'g');
-insert into recipe_ingredients values (17, 3, 35, 2, 'pcs');
-insert into recipe_ingredients values (18, 3, 36, 2, 'pcs');
-insert into recipe_ingredients values (19, 3, 37, 1, 'pcs');
+insert into recipe_ingredients values (15, 3, 33, 7, 'g', TRUE);
+insert into recipe_ingredients values (16, 3, 34, 50, 'g', TRUE);
+insert into recipe_ingredients values (17, 3, 35, 2, 'pcs', TRUE);
+insert into recipe_ingredients values (18, 3, 36, 2, 'pcs', FALSE);
+insert into recipe_ingredients values (19, 3, 37, 1, 'pcs', FALSE);
 
 -- Dumplings
-insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
-insert into recipe_ingredients values (21, 2, 46, 20, 'g');
-insert into recipe_ingredients values (22, 2, 47, 50, 'g');
+insert into recipe_ingredients values (20, 2, 45, 3, 'pcs', FALSE);
+insert into recipe_ingredients values (21, 2, 46, 20, 'g', TRUE);
+insert into recipe_ingredients values (22, 2, 47, 50, 'g', TRUE);
+insert into recipe_ingredients values (30, 2, 19, 4, 'pcs', FALSE);
 
 -- Chocolate Brownies
-insert into recipe_ingredients values (23, 4, 39, 100, 'ml');
-insert into recipe_ingredients values (24, 4, 40, 200, 'g');
-insert into recipe_ingredients values (25, 4, 41, 50, 'g');
-insert into recipe_ingredients values (26, 4, 42, 1, 'pcs');
-insert into recipe_ingredients values (27, 4, 43, 100, 'g');
-insert into recipe_ingredients values (28, 4, 44, 3.5, 'g');
+insert into recipe_ingredients values (23, 4, 39, 100, 'ml', TRUE);
+insert into recipe_ingredients values (24, 4, 40, 200, 'g', FALSE);
+insert into recipe_ingredients values (25, 4, 41, 50, 'g', TRUE);
+insert into recipe_ingredients values (26, 4, 42, 1, 'pcs', TRUE);
+insert into recipe_ingredients values (27, 4, 43, 100, 'g', FALSE);
+insert into recipe_ingredients values (28, 4, 44, 3.5, 'g', FALSE);
 
 -- FOOD GROUPS 
 -- id, id ingredient, food group id (1, 'Lactose',
