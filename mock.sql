@@ -2,7 +2,7 @@
 insert into recipes values (1, 'Mushroom-Risotto', 'A creamy italian dish', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.bgYmIo8ata1o2ifT385NnAHaHa%26pid%3DApi&f=1&ipt=08604a185782e4e904ac3a12e369b6ac1534c02811b607f62a91c927552764d3&ipo=images');
 insert into recipes values (2, 'Dumplings', 'A Bavarian receipe', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.YWvT_e0FJJ4S50KCIqhUPgHaFj%26pid%3DApi&f=1&ipt=aa0eaa922ea65abaf5e583b615c077b3320c8156ce382ba43994824c7fb3c01d&ipo=images');
 insert into recipes values (3, 'Leberkaese Burger', 'A Bavarian receipe', 4, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.9MbDLrIfGBcyPvLKY_bnjwHaHa%26pid%3DApi&f=1&ipt=29f655a42c7228a68020ba659bdd24b89e9a64f471786572285925fb19e1290a&ipo=images');
-insert into recipes values (4, 'Chocolate Brownies', 'A sweet deal! (for 2)', 2, NULL);
+insert into recipes values (4, 'Chocolate Brownies', 'A sweet deal! (for 2)', 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.-fLP1Y5PBw8v-NTF5RF7lwHaHa%26pid%3DApi&f=1&ipt=2a1a718df363a5243d99f36fda4e2dce6156d9578058768f9e38bde9aeaba17d&ipo=images');
 
 --INGREDIENTS
 --Ingredients Mushroom Risotto
@@ -105,6 +105,14 @@ insert into recipe_ingredients values (19, 3, 37, 1, 'pcs');
 insert into recipe_ingredients values (20, 2, 45, 3, 'pcs');
 insert into recipe_ingredients values (21, 2, 46, 20, 'g');
 insert into recipe_ingredients values (22, 2, 47, 50, 'g');
+
+-- Chocolate Brownies
+insert into recipe_ingredients values (23, 4, 39, 100, 'ml');
+insert into recipe_ingredients values (24, 4, 40, 200, 'g');
+insert into recipe_ingredients values (25, 4, 41, 50, 'g');
+insert into recipe_ingredients values (26, 4, 42, 1, 'pcs');
+insert into recipe_ingredients values (27, 4, 43, 100, 'g');
+insert into recipe_ingredients values (28, 4, 44, 3.5, 'g');
 
 -- FOOD GROUPS 
 -- id, id ingredient, food group id (1, 'Lactose',
