@@ -198,7 +198,16 @@ insert into ingredient_diet_goals values
     (27, 11, 3),
     (28, 12, 3),
     (29, 13, 3),
-    (30, 14, 4);
+    (30, 14, 4),
+    -- put every ingredient of risotto into clean eating
+    (31, 6, 4),
+    (32, 8, 4),
+    (34, 10, 4),
+    (35, 11, 4),
+    (36, 12, 4),
+    (37, 13, 4),
+    (38, 27, 4),
+    (39, 48, 4);
 
 -- SPECIAL DIETS
 -- diet gols id, ingredient_id INTEGER NOT NULL, diet_goal_id INT
