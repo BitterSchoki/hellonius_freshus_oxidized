@@ -82,6 +82,12 @@ insert into ingredients values
     (47, 'Breadcrumbs', '', 'roll');
 
 
+-- cream + more
+insert into ingredients values
+    (48, 'Cream', '', 'cream'),
+    (49, 'Soy cream', '', 'cream'),
+    (50, 'Plant-based Leberkas (TM)', 'No liver, no cheese, entirely vegan', 'leberkaese');
+
 --_______________________________________________________
 
 
@@ -103,7 +109,8 @@ insert into recipe_ingredients values
     (12, 1, 12, 50, 'g', TRUE),
     (13, 1, 13, 50, 'ml', TRUE),
     (14, 1, 14, 20, 'g', TRUE),
-    (29, 1, 27, 10, 'g', TRUE);
+    (29, 1, 27, 10, 'g', TRUE),
+    (31, 1, 48, 200, 'ml', FALSE);
 
 -- Leberkasburger
 insert into recipe_ingredients values
@@ -125,7 +132,7 @@ insert into recipe_ingredients values
     (23, 4, 39, 100, 'ml', TRUE),
     (24, 4, 40, 200, 'g', FALSE),
     (25, 4, 41, 50, 'g', TRUE),
-    (26, 4, 42, 1, 'pcs', TRUE),
+    (26, 4, 19, 1, 'pcs', TRUE),
     (27, 4, 43, 100, 'g', FALSE),
     (28, 4, 44, 3.5, 'g', FALSE);
 
@@ -138,7 +145,7 @@ insert into ingredient_food_groups values
     (3, 6, 3),
     (4, 8, 3),
     (5, 11, 3),
-    (6, 11, 1),
+    -- (6, 11, 1),
     (7, 12, 1),
     (8, 15, 3),
     (9, 18, 1),
@@ -156,7 +163,8 @@ insert into ingredient_food_groups values
     (21, 45, 2),
     (22, 46, 3),
     (23, 47, 2),
-    (24, 1, 3);
+    (24, 1, 3),
+    (25, 37, 2);
 
 -- DIET GOALS
 --id, ingredient_id INTEGER NOT NULL, special_diet_id
@@ -223,4 +231,6 @@ insert into ingredient_special_diets values
     (25, 11, 2),
     (26, 12, 2),
     (27, 13, 1),
-    (28, 14, 1);
+    (28, 14, 1),
+    (29, 50, 1),
+    (30, 38, 2);
